@@ -36,7 +36,7 @@ function App() {
 				onRemove={handleRemoveItems}
 				items={items}
 			/>
-			<Stats />
+			<Stats items={items} />
 		</div>
 	);
 }
