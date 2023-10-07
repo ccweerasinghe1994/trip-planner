@@ -15,11 +15,27 @@ function App() {
 	const handleRemoveItems = (id: number) => {
 		setItems((prevItems) => prevItems.filter((item) => item.id !== id));
 	};
+
+	const handleToggleItems = (id: number) => {
+		setItems((prevItems) =>
+			prevItems.map((item) => {
+				if (item.id === id) {
+					return { ...item, packed: !item.packed };
+				}
+				return item;
+			}),
+		);
+	};
+
 	return (
 		<div className={'app'}>
 			<Logo />
 			<Form onAddItems={handleAddItems} />
-			<PackingList onRemove={handleRemoveItems} items={items} />
+			<PackingList
+				onUpdate={handleToggleItems}
+				onRemove={handleRemoveItems}
+				items={items}
+			/>
 			<Stats />
 		</div>
 	);

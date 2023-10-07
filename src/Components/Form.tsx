@@ -1,5 +1,4 @@
-import { FC } from 'react';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, FC } from 'react';
 
 export type TItem = {
 	id: number;
