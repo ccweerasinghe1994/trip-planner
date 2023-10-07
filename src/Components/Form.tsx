@@ -1,6 +1,16 @@
+import { FC } from 'react';
 import { FormEvent, useState } from 'react';
 
-const Form = () => {
+export type TItem = {
+	id: number;
+	description: string;
+	quantity: number;
+	packed: boolean;
+};
+type Props = {
+	onAddItems: (newItem: TItem) => void;
+};
+const Form: FC<Props> = ({ onAddItems }) => {
 	const [quantity, setQuantity] = useState(1);
 	const [description, setDescription] = useState('');
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -11,6 +21,7 @@ const Form = () => {
 			quantity,
 			packed: false,
 		};
+		onAddItems(newItem);
 		setQuantity(1);
 		setDescription('');
 	};

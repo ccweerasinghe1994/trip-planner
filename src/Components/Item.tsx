@@ -7,17 +7,20 @@ interface IProps {
 		quantity: number;
 		packed: boolean;
 	};
+	onRemove: (id: number) => void;
 }
 
-const Item: FC<IProps> = ({ item }) => {
-	const { description, quantity, packed } = item;
-
+const Item: FC<IProps> = ({ item, onRemove }) => {
+	const { description, quantity, packed, id } = item;
+	const handleRemove = () => {
+		onRemove(id);
+	};
 	return (
 		<li>
 			<span style={packed ? { textDecoration: 'line-through' } : {}}>
 				{quantity} {description}
 			</span>
-			<button>❌</button>
+			<button onClick={handleRemove}>❌</button>
 		</li>
 	);
 };
